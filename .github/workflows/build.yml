@@ -25,7 +25,13 @@ jobs:
 
       - name: Build APK
         run: |
-          buildozer -v android debug
+          buildozer -v android debug 2>&1 | tee build.log
+
+      - name: Show errors if fail
+        if: failure()
+        run: |
+          grep -i -A 10 -B 5 "error" build.log || true
+          grep -i -A 10 -B 5 "traceback" build.log || true
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
