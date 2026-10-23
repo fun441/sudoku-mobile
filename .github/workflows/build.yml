@@ -24,6 +24,7 @@ jobs:
           pip install --upgrade buildozer cython virtualenv
 
       - name: Build APK
+        working-directory: SudokuMobile
         run: |
           buildozer -v android debug 2>&1 | tail -50
 
@@ -31,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sudoku-apk
-          path: bin/*.apk
+          path: SudokuMobile/bin/*.apk
