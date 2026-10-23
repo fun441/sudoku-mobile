@@ -28,7 +28,7 @@ jobs:
           buildozer -v android debug 2>&1 | tail -50
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sudoku-apk
           path: bin/*.apk
